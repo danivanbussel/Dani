@@ -3,7 +3,6 @@ const discord = require("discord.js");
 module.exports.run = async(bot, message, args) => {
 
                  // !ip
-                 if (command === `${prefix}ip`) {
                     var botEmbed = new discord.MessageEmbed()
                             .setTitle("Server informatie")
                             .setColor("#29e53f")
@@ -19,7 +18,7 @@ module.exports.run = async(bot, message, args) => {
                     return message.channel.send(botEmbed);
                     }
 
-}
+
 
 module.exports.help = {
     name: "ip"
