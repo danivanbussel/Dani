@@ -9,7 +9,7 @@ bot.on("ready", async () => {
         bot.user.setActivity("voorbeeld.ip", { type: "PLAYING" });
 });
 
-
+ 
 
 
        
