@@ -3,6 +3,17 @@ const botConfig = require("./botconfig.json");
 const bot = new discord.Client();
 
 
+
+
+
+
+
+
+
+
+
+
+
 // bot status (NL : Community is online!)
 bot.on("ready", async () => {
         console.log(`RaceTopia bot is online!`);
@@ -184,110 +195,38 @@ bot.on("ready", async () => {
 
 
 
-                // !giveaway
-                if (command === `${prefix}giveaway`) {
-                module.exports.run = async (bot, message, args) => {
+                bot.on("guildMemberAdd", member => {
  
-                        // Argumenten die we later nodig hebben.
-                        var item = "";
-                        var time;
-                        var winnerCount;
+                        const channel = member.guild.channels.find("name", "report");
+                        if (!channel) console.log("Kan het kanaal niet vinden.");
                      
-                        // Nakijken als je perms hebt om dit command te doen.
-                        if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Sorry jij kan dit niet doen");
+                        var joinEmbed = new discord.RichEmbed()
+                            .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
+                            .setDescription(`Hoi ${member.user.username}, **Welkom op de server**. Hier nog meer uitleg.`)
+                            .setColor("#00FF00")
+                            .setTimestamp()
+                            .setFooter("Gebruiker gejoined.");
                      
-                        // !giveaway aantalWinnaars seconden itemOmTeWinnen.
+                        channel.send(joinEmbed);
                      
-                        // Aantal winnaars opvragen.
-                        winnerCount = args[0];
-                        // Tijd hoelang het moet duren.
-                        time = args[1];
-                        // Welke prijs men kan winnen.
-                        item = args.splice(2, args.length).join(' ');
+                    });
+
+
+
+                    bot.on("guildMemberRemove", member => {
+ 
+                        const channel = member.guild.channels.find("name", "report");
+                        if (!channel) console.log("Kan het kanaal niet vinden.");
                      
-                        // Verwijder het bericht dat net is gemaakt door de gebruiker.
-                        message.delete();
+                        var joinEmbed = new discord.RichEmbed()
+                            .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
+                            .setColor("#FF0000")
+                            .setTimestamp()
+                            .setFooter("Gebruiker Geleaved.");
                      
-                        // Verval datum berekenen.
-                        var date = new Date().getTime();
-                        var dateTime = new Date(date + (time * 1000));
+                        channel.send(joinEmbed);
                      
-                        // Maak embed aan.
-                        var giveawayEmbed = new discord.RichEmbed()
-                            .setTitle("🎉 **GIVEAWAY** 🎉")
-                            .setFooter(`Vervalt: ${dateTime}`)
-                            .setDescription(item);
-                     
-                        // Verzend embed en zet de reactie op de popper.
-                        var embedSend = await message.channel.send(giveawayEmbed);
-                        embedSend.react("🎉");
-                     
-                        // Zet een timeout die na het aantal seconden af gaat.
-                        setTimeout(function () {
-                     
-                            // Argumenten die we nodig hebben.
-                            var random = 0;
-                            var winners = [];
-                            var inList = false;
-                     
-                            // Verkrijg de gebruikers die gereageerd hebben op de giveaway.
-                            var peopleReacted = embedSend.reactions.get("🎉").users.array();
-                     
-                            // Hier gaan we al de mensen over gaan en kijken als de bot er tussen staan
-                            // De bot moeten we uit de lijst weghalen en dan gaan we verder.
-                            for (var i = 0; i < peopleReacted.length; i++) {
-                                if (peopleReacted[i].id == bot.user.id) {
-                                    peopleReacted.splice(i, 1);
-                                    continue;
-                                }
-                            }
-                     
-                            // Hier kijken we na als er wel iemand heeft meegedaan.
-                            if (peopleReacted.length == 0) {
-                                return message.channel.send("Niemand heeft gewonnen dus de bot wint.");
-                            }
-                     
-                            // Tijdelijk kijken we na als er te wienig mensen hebben mee gedaan aan de wedstrijd.
-                            if (peopleReacted.length < winnerCount) {
-                                return message.channel.send("Er zijn te weinig mensen die mee deden daarom heeft de bot gewonnen.");
-                            }
-                     
-                            // Voor het aantal winnaars dat we eerder hebben opgegeven gaan we een random nummer aanmaken en de user in een array zetten.
-                            for (var i = 0; i < winnerCount; i++) {
-                     
-                                inList = false;
-                     
-                                // Aanmaken van een random getal zodat we een user kunnen kiezen.
-                                random = Math.floor(Math.random() * peopleReacted.length);
-                     
-                                // Als een winnaar al voorkomt in de winnaars lijst dan moeten we opnieuw gaan zoeken naar een andere winnaar.
-                                for (var y = 0; y < winners.length; y++) {
-                                    // Nakijken als de geslecteerde winnaar al in de lijst zit.
-                                    if (winners[y] == peopleReacted[random]) {
-                                        // We zetten i 1 minder zodat we opnieuw kunnen doorgaan in de lijst.
-                                        i--;
-                                        // We zetten dit op true zodat we weten dat deze al in de lijst zit.
-                                        inList = true;
-                                        break;
-                                    }
-                                }
-                     
-                                // Zit deze niet in de lijst gaan we deze toevoegen.
-                                if (!inList) {
-                                    winners.push(peopleReacted[random]);
-                                }
-                     
-                            }
-                     
-                            // Voor iedere winnaar gaan we een bericht sturen.
-                            for (var i = 0; i < winners.length; i++) {
-                                message.channel.send("Proficiat " + winners[i] + `! Je hebt gewonnen **${item}**.`);
-                            }
-                     
-                        }, 1000 * time);
-                     
-                     
-                    }}
+                    });
                      
 
 
