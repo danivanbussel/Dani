@@ -17,7 +17,7 @@ const bot = new discord.Client();
 // bot status (NL : Community is online!)
 bot.on("ready", async () => {
         console.log(`RaceTopia bot is online!`);
-        bot.user.setActivity("voorbeeld.ip", { type: "PLAYING" });
+        bot.user.setActivity("test.ip", { type: "PLAYING" });
 });
 
  
@@ -46,7 +46,7 @@ bot.on("ready", async () => {
                                 .setFooter('Gemaakt door: Dani van Bussel', 'https://lh3.googleusercontent.com/-JubvaieWRSc/XoeJgjnRh8I/AAAAAAAAF_E/0zQNDI2_1AEYjdrYXBegO_IAcd_G-LE2QCEwYBhgL/w140-h139-p/20180712_091048.jpg');
         
                         return message.channel.send(botEmbed);
-                }
+                } 
 
                  // !ip
                 if (command === `${prefix}ip`) {
