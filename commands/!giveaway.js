@@ -33,7 +33,7 @@ module.exports.run = async (bot, message, args) => {
         .setDescription(item);
  
     // Verzend embed en zet de reactie op de popper.
-    var botEmbedSend = await message.channel.send(BotEmbed);
+    return message.channel.send(botEmbed);
     botEmbedSend.react("🎉");
  
     // Zet een timeout die na het aantal seconden af gaat.
