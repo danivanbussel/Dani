@@ -21,15 +21,7 @@ fs.readdir("./commands/", (err, files) => {
                 console.log(`De File ${f} is geladen`);
 
                 bot.command.set(fileGet.help.name, fileGet);
-
-
-
-
         })
-
-
-
-
 
 });
 
