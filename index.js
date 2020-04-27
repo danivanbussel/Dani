@@ -6,7 +6,7 @@ const bot = new discord.Client();
 // bot status (NL : Community is online!)
 bot.on("ready", async () => {
         console.log(`RaceTopia bot is online!`);
-        bot.user.setActivity("Voorbeeld.ip", { type: "PLAYING" });
+        bot.user.setActivity("voorbeeld.ip", { type: "PLAYING" });
 });
 
  
