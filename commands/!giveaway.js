@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
     // Tijd hoelang het moet duren.
     time = args[1];
     // Welke prijs men kan winnen.
-    item = args.splice(2, args.length).join(' ');
+    item = args.splice(2, args.length).join(" ");
  
     // Verwijder het bericht dat net is gemaakt door de gebruiker.
     message.delete();
