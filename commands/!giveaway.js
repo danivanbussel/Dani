@@ -27,14 +27,14 @@ module.exports.run = async (bot, message, args) => {
     var dateTime = new Date(date + (time * 1000));
  
     // Maak embed aan.
-    var botEmbed = new discord.MessageEmbed()
+    var embed = new discord.MessageEmbed()
         .setTitle("🎉 **GIVEAWAY** 🎉")
         .setFooter(`Vervalt: ${dateTime}`)
         .setDescription(item);
  
     // Verzend embed en zet de reactie op de popper.
-    var botEmbedSend = await message.channel.send(BotEmbed);
-    botEmbedSend.react("🎉");
+    var embedSend = await message.channel.send(embed);
+    embedSend.react("🎉");
  
     // Zet een timeout die na het aantal seconden af gaat.
     setTimeout(function () {
