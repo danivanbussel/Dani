@@ -66,7 +66,7 @@ module.exports.run = async(bot, message, args) => {
      
                              let time = args[0];
                           let winners = args[1];
-                          let prize = args.slice(2).join(" ")
+                          let prize = args.slice(2).join(" ") 
                           if (!time || !winners || !prize) return message.reply(`Wrong Use | Usage : \n .gcreate <time> <winners> <prize>`)
                           if (isNaN(winners)) return message.reply(`Winner Need To Be Number`)
                           if (!time) return message.reply(`1s , 1m , 1h , 1w , 1mo`)
