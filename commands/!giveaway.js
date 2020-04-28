@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args) => {
     var dateTime = new Date(date + (time * 1000));
  
     // Maak embed aan.
-    var giveawayEmbed = new discord.RichEmbed()
+    var giveawayEmbed = new discord.MessageEmbed()
         .setTitle("🎉 **GIVEAWAY** 🎉")
         .setFooter(`Vervalt: ${dateTime}`)
         .setDescription(item);
