@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
     if(!idee) return message.channel.send("Je bent je idee vergeten te sturen!");
     var ideeEmbed = new discord.MessageEmbed()
     .setTitle("nieuw idee")
-    .setCollor("#00FF00")
+    .setCollor("#4287f5")
     .addField("idee", idee)
     .addField("ingezonden door", message.author);
 
