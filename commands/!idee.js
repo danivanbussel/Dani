@@ -1,37 +1,34 @@
 const discord = require("discord.js");
- 
+
 module.exports.run = async (bot, message, args) => {
- 
-    // Vang het idee op.
-    var idee = args.join(" ");
- 
-    // Kijk na als er een idee is meegegeven.
-    if (!idee) return message.channel.send("Geen Idee meegegeven gelieve een idee mee te geven.");
- 
-    // Maak het embed aan.
+
+
+
+    var idee = args.join(' ');
+    if(!idee) return message.channel.send("Je bent je idee vergeten te sturen!");
     var ideeEmbed = new discord.RichEmbed()
-        .setTitle("Nieuw Idee")
-        .setColor("#00FF00")
-        .addField("Idee: ", idee)
-        .addField("Ingezonden door: ", message.author);
- 
-    // Vind het kanaal.
-    var ideeChannel = message.guild.channels.find(`name`, "idee");
-    if (!ideeChannel) return message.guild.send("Kan het kanaal niet vinden");
- 
-    // Verzend het bericht en voeg er reacties aan toe.
+    .setTitle("nieuw idee")
+    .setCollor("#00FF00")
+    .addField("idee", idee)
+    .addField("ingezonden door", message.author);
+
+    var ideeChannel =message.guild.channels.find("name","idee");
+    if(!ideeChannel) return message.channel.send("kanaal niet gevonden!")
+
     ideeChannel.send(ideeEmbed).then(embedMessage => {
         embedMessage.react('👍');
         embedMessage.react('👎');
-    });
- 
-    // Einde.
- 
+
+    })
+
+
+
+
+
+
 }
- 
+
 module.exports.help = {
     name: "idee",
-    description: "Heb je een idee. Zet het dan hier en misschien passen we het toe."
+    description: "Heb je een iedee voor de server of discord? Zet het dan in dit bericht! wij zullen er naar kijken!"
 }
-
-
