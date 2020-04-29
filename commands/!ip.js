@@ -6,7 +6,7 @@ module.exports.run = async(bot, message, args) => {
                     var botEmbed = new discord.MessageEmbed()
                             .setTitle("Server informatie")
                             .setColor("#29e53f")
-                            .setThumbnail(`https://cdn.discordapp.com/attachments/695319903523045457/704031383676518471/RaceTopia_2.png`)
+                            .setThumbnail(`https://media.discordapp.net/attachments/703216006121652244/704987653975703644/RaceTopia_Network.png`)
                             .addField("**__🔐Server ip__**", "{komt Soon!}")
                             .addField("**__🌎Server versie__**", "1.12.2 Optifine")
                             .addField("**__🔴Server status__**", "Offline")
