@@ -63,7 +63,7 @@ bot.on("ready", async () => {
 
                 bot.on("guildMemberAdd", member => {
  
-                        const channel = member.guild.channels.find("name", "report");
+                        const channel = member.guild.channels.cache.find(c => c.name == "report"); 
                         if (!channel) console.log("Kan het kanaal niet vinden.");
                      
                         var joinEmbed = new discord.RichEmbed()
@@ -79,7 +79,7 @@ bot.on("ready", async () => {
 
                     bot.on("guildMemberRemove", member => {
  
-                        const channel = member.guild.channels.find("name", "report");
+                        const channel = member.guild.channels.cache.find(c => c.name == "report"); 
                         if (!channel) console.log("Kan het kanaal niet vinden.");
                      
                         var joinEmbed = new discord.RichEmbed()
