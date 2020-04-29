@@ -8,7 +8,7 @@ module.exports.run = async(bot, message, args) => {
         if (!channel) console.log("Kan het kanaal niet vinden.");
      
         var joinEmbed = new discord.RichEmbed()
-            .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
+            .setAuthor(`${member.user.tag}`, "welkom!")
             .setColor("#FF0000")
             .setTimestamp()
             .setFooter("Gebruiker Geleaved.");
