@@ -4,7 +4,7 @@ module.exports.run = async(bot, message, args) => {
 
     bot.on("guildMemberRemove", member => {
 
-        const channel = member.guild.channels.cache.find(c => c.name == "👋welkom");
+        const channel = member.guild.channels.cache.find(c => c.name == "test");
         if (!channel) console.log("Kan het kanaal niet vinden.");
 
         var joinEmbed = new discord.MessageEmbed()
