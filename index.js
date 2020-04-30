@@ -30,7 +30,7 @@ fs.readdir("./commands/", (err, files) => {
 // bot status (NL : Community is online!)
 bot.on("ready", async () => {
         console.log(`RaceTopia bot is online!`);
-        bot.user.setActivity("koekkoek.ip", { type: "PLAYING" });
+        bot.user.setActivity("test.ip", { type: "PLAYING" });
 });
 
 
@@ -48,7 +48,11 @@ bot.on('message', async message => {
 
 
 
-});;
+})
+
+
+
+
 
 
 
